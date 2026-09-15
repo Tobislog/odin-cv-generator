@@ -35,7 +35,7 @@ function App() {
 
   // Finaler Sate für CV, wird bei Klick auf Save gefüllt.
   const [savedGeneralInfo, setSavedGeneralInfo] = useState(defaultGeneralInfo);
-  const [savedEducatonInfo, setSavedEducationInfo] = useState(defaultEducationInfo);
+  const [savedEducationInfo, setSavedEducationInfo] = useState(defaultEducationInfo);
   const [savedPracticalInfo, setSavedPracticalInfo] = useState(defaultPracticalInfo);
 
   return (
@@ -69,7 +69,7 @@ function App() {
 
               <div>
                 <h3>Ausbildung</h3>
-                {savedEducatonInfo.map(edu => (
+                {savedEducationInfo.map(edu => (
                   <div key={edu.id}>
                     <strong>{edu.title}</strong> - {edu.school}
                     <p>
