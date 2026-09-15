@@ -3,6 +3,7 @@ import './App.css';
 import TextInput from './components/TextInput.jsx';
 import Button from './components/Button.jsx';
 import GeneralSection from './components/GeneralSection.jsx';
+import EducationSection from './components/EducationSection.jsx';
 
 const defaultGeneralInfo = {
   firstName: 'Your',
@@ -12,10 +13,19 @@ const defaultGeneralInfo = {
   phone: '0123 4567890'
 };
 
+const defaultEducationInfo = [{
+  id: '1',
+  school: 'Muster-Universität',
+  title: 'B.Sc. Informatik',
+  startDate: '2019-10-01',
+  endDate: '2023-09-30'
+}];
+
 function App() {
 
   // Finaler Sate für CV, wird bei Klick auf Save gefüllt.
   const [savedGeneralInfo, setSavedGeneralInfo] = useState(defaultGeneralInfo);
+  const [savedEducatonInfo, setSavedEducationInfo] = useState(defaultEducationInfo);
 
   return (
     
@@ -27,17 +37,10 @@ function App() {
             initialData={defaultGeneralInfo}
             onSave={(data) => setSavedGeneralInfo(data)}
           />
-
-          <section className="formSection">
-            <h2>Educational Experiences</h2>
-            <form id="educationForm">
-              <TextInput label="School Name" />
-              <TextInput label="Title of Study" />
-              <TextInput label="Beginn" type="date" />
-              <TextInput label="Ende" type="date" />
-              <Button text="Save" />
-            </form>
-          </section>
+          <EducationSection
+            initialData={defaultEducationInfo}
+            onSave={(data) => setSavedEducationInfo(data)}
+          />
           <section className="formSection">
             <h2>Practical Experiences</h2>
             <form>
@@ -56,6 +59,20 @@ function App() {
                 <h2>{savedGeneralInfo.firstName} {savedGeneralInfo.lastName}</h2>
                 <p>Geboren: {new Date(savedGeneralInfo.birthDate).toLocaleDateString('de-DE')}</p>
                 <p>E-Mail: {savedGeneralInfo.email} | Tel: {savedGeneralInfo.phone}</p>
+              </div>
+
+              <hr className="renderSectionDivider"/>
+
+              <div>
+                <h3>Ausbildung</h3>
+                {savedEducatonInfo.map(edu => (
+                  <div key={edu.id}>
+                    <strong>{edu.title}</strong> - {edu.school}
+                    <p>
+                      {new Date(edu.startDate).toLocaleDateString('de-DE')} bis {new Date(edu.endDate).toLocaleDateString('de-DE')}
+                    </p>
+                  </div>
+                ))}
               </div>
           </div>
         </div>
