@@ -26,12 +26,14 @@ function PracticalItem ({item, onChange, onDelete, disabled}) {
             />
             <TextInput
                 label="Beginn"
+                type="date"
                 value={item.startDate}
                 onChange={(e) => onChange(item.id, 'startDate', e.target.value)}
                 disabled={disabled}
             />
             <TextInput
                 label="Ende"
+                type="date"
                 value={item.endDate}
                 onChange={(e) => onChange(item.id, 'endDate', e.target.value)}
                 disabled={disabled}
