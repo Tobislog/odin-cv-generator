@@ -58,6 +58,13 @@ function App() {
           />
         </div>
         <div className="right">
+          <button 
+          type="button"
+          className="no-print print-btn"
+          onClick={() => window.print()}
+          >
+            Als PDF herunterladen ↓
+          </button>
           <div className="cvRender">
               <div>
                 <h2>{savedGeneralInfo.firstName} {savedGeneralInfo.lastName}</h2>

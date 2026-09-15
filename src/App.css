@@ -53,4 +53,57 @@ footer {
   }
 }
 
+.print-btn {
+    margin-bottom: 10px;
+    align-self: last baseline;
+}
 
+/* Druck-Styles für PDF-Export (DIN A4) */
+@media print {
+  /* 1. DIN A4 Hochformat und Seitenränder festlegen */
+  @page {
+    size: A4 portrait;
+    margin: 15mm; /* Sauberer Rand auf dem Papier */
+  }
+
+  /* 2. Hintergrundfarben und Ränder erzwingen */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 3. Alles ausblenden, was NICHT auf das PDF gehört */
+  header,
+  footer,
+  h1,
+  .left,
+  .no-print {
+    display: none !important;
+  }
+
+  /* 4. Das Layout für den Druck glattziehen */
+  body, 
+  #page, 
+  .right {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background: white !important;
+  }
+
+  /* 5. Die CV-Vorschau füllt die Seite sauber aus */
+  .cvRender {
+    width: 100% !important;
+    box-shadow: none !important; /* Schatten vom Bildschirm entfernen */
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Verhindert unschöne Seitenumbrüche mitten in einem Job/Ausbildungsblock */
+  .cvRender > div,
+  .cvRender strong {
+    break-inside: avoid;
+  }
+}
