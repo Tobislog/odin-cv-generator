@@ -94,5 +94,5 @@ p {
 button {
   -webkit-appearance: none;
   appearance: none;
-  color: inherit;
+  color: var(--text-h);
 }
