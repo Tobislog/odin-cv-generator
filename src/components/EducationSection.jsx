@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TextInput from './TextInput.jsx';
 import Button from './Button.jsx';
+import '../styles/EducationSection.css';
 
 // Helper-Function for Education-Item
 function EducationItem ({item, onChange, onDelete, disabled}) {
@@ -70,7 +71,7 @@ function EducationSection ({initialData, onSave}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isSaved){
-            setIsSafed(false);
+            setIsSaved(false);
         } else {
             onSave(draftList);
             setIsSaved(true);

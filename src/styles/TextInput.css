@@ -5,7 +5,7 @@ label{
 .TextInputGroup {
     display: flex;
     justify-content: space-between;
-    margin: 5px;
+    margin: 7px 0;
 }
 
 input {
