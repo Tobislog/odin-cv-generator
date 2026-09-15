@@ -6,6 +6,7 @@ export default function TextInput ({
     id: customId,
     type = "text",
     disabled = false,
+    onChange,
     ...rest
 
 }) {
@@ -18,6 +19,7 @@ export default function TextInput ({
                 id = {inputId}
                 type = {type}
                 disabled = {disabled}
+                onChange = {onChange}
                 {...rest}
             />
         </div>

@@ -1,0 +1,45 @@
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50%;
+    
+}
+
+.left {
+    border-right: 1px solid var(--text);
+
+    @media (max-width: 700px) {
+        border-right: none;
+    }
+}
+
+.right {
+    padding: 10px;
+}
+
+.formSection {
+    padding: 5px;
+    min-width: 320px;
+}
+
+.cvRender {
+    background-color: white;
+    width: 100%;
+    aspect-ratio: 1 / 1.414;
+    border: 1px solid black;
+
+}
+
+#page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+}
+
+

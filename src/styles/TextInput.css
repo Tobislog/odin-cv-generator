@@ -1,3 +1,20 @@
 label{
     margin-right: 10px;
 }
+
+.TextInputGroup {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+input {
+    border-color: var(--accent);
+    border-radius: 7px;
+    font-family: var(--sans);
+
+    &:focus {
+        outline: none;
+        background-color: var(--accent-bg);
+    }
+}
