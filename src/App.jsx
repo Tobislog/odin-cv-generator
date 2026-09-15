@@ -6,8 +6,10 @@ import Button from './components/Button.jsx';
 function App() {
   const [text, setText] = useState('');
 
-  const handleSave = () => {
+  let generalSaved = true;
 
+  const handleSave = () => {
+    generalSaved = true;
   }
 
   return (
@@ -24,7 +26,7 @@ function App() {
               <TextInput label="Geburtsdatum" type="date" />
               <TextInput label="E-Mail" type="email" />
               <TextInput label="Phone" type="tel" />
-              <Button text="Save" />
+              <Button text="Save" onClick={handleSave}/>
             </form>
           </section>
           <section className="formSection">
@@ -51,7 +53,7 @@ function App() {
         </div>
         <div className="right">
           <div className="cvRender">
-            
+            {generalSaved && <h1>General Saved!</h1>}
           </div>
         </div>
       </div>

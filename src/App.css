@@ -24,6 +24,8 @@
 }
 
 .cvRender {
+    --text: black;
+    --text-h: black;
     background-color: white;
     width: 100%;
     aspect-ratio: 1 / 1.414;

@@ -2,9 +2,10 @@ import '../styles/Button.css';
 
 export default function Button ({
     text = "Click Me!",
+    onClick,
     ...rest
 }) {
     return (
-        <button>{text}</button>
+        <button onClick={onClick}>{text}</button>
     )
 }
