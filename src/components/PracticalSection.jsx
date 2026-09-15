@@ -1,40 +1,43 @@
-import { useState } from 'react';
-import TextInput from './TextInput.jsx';
-import Button from './Button.jsx';
-import '../styles/EducationSection.css';
+import { useState } from "react";
+import TextInput from "./TextInput";
+import Button from "./Button";
+import '../styles/PracticalSection.css';
 
-// Helper-Function for Education-Item
-function EducationItem ({item, onChange, onDelete, disabled}) {
+function PracticalItem ({item, onChange, onDelete, disabled}) {
     return (
-        <div className="educationItem">
+        <div className="practicalItem">
             <TextInput
-                label="School Name"
-                value={item.school}
-                onChange={(e) => onChange(item.id, 'school', e.target.value)}
+                label="Company Name"
+                value={item.company}
+                onChange={(e) => onChange(item.id, 'company', e.target.value)}
                 disabled={disabled}
             />
             <TextInput
-                label="Title of Study"
-                value={item.title}
-                onChange={(e) => onChange(item.id, 'title', e.target.value)}
+                label="Role"
+                value={item.role}
+                onChange={(e) => onChange(item.id, 'role', e.target.value)}
+                disabled={disabled}
+            />
+            <TextInput
+                label="Responsibilities"
+                value={item.responsibilities}
+                onChange={(e) => onChange(item.id, 'responsibilities', e.target.value)}
                 disabled={disabled}
             />
             <TextInput
                 label="Beginn"
                 value={item.startDate}
-                type="date"
                 onChange={(e) => onChange(item.id, 'startDate', e.target.value)}
                 disabled={disabled}
             />
             <TextInput
                 label="Ende"
                 value={item.endDate}
-                type="date"
                 onChange={(e) => onChange(item.id, 'endDate', e.target.value)}
                 disabled={disabled}
             />
             {!disabled && (
-                <button type="buton" onClick={() => onDelete(item.id)}>
+                <button type="button" onClick={() => onDelete(item.id)}>
                     Löschen
                 </button>
             )}
@@ -42,13 +45,12 @@ function EducationItem ({item, onChange, onDelete, disabled}) {
     )
 }
 
-
-function EducationSection ({initialData, onSave}) {
+function PracticalSection ({initialData, onSave}) {
     const [draftList, setDraftList] = useState(initialData);
     const [isSaved, setIsSaved] = useState(false);
 
     const handleChange = (id, field, value) => {
-        setDraftList(prev => 
+        setDraftList(prev =>
             prev.map(item => (item.id === id ? {...item, [field]: value} : item))
         );
     };
@@ -56,8 +58,9 @@ function EducationSection ({initialData, onSave}) {
     const handleAdd = () => {
         const newItem = {
             id: crypto.randomUUID(),
-            school: '',
-            title: '',
+            company: '',
+            role: '',
+            responsibilities: '',
             startDate: '',
             endDate: ''
         };
@@ -69,28 +72,28 @@ function EducationSection ({initialData, onSave}) {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if (isSaved){
+        e.preventDefault()
+        if (isSaved) {
             setIsSaved(false);
         } else {
             onSave(draftList);
-            setIsSaved(true);
+            setIsSaved(true)
         }
     };
 
     return (
         <section className="formSection">
             <h2>
-                Educational Experiences
+                Practical Experiences
                 {!isSaved && (
-                    <button type="button" onClick={handleAdd} id="addEduButton">
+                    <button type="button" onClick={handleAdd} id="addPracButton">
                         +
                     </button>
                 )}
             </h2>
             <form onSubmit={handleSubmit}>
                 {draftList.map(item => (
-                    <EducationItem
+                    <PracticalItem
                         key={item.id}
                         item={item}
                         onChange={handleChange}
@@ -98,12 +101,13 @@ function EducationSection ({initialData, onSave}) {
                         disabled={isSaved}
                     />
                 ))}
-                
+
                 <Button text={isSaved ? "Edit" : "Save"} type="submit" />
             </form>
         </section>
     )
-
 }
 
-export default EducationSection;
+
+
+export default PracticalItem;

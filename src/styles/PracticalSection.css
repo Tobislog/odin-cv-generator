@@ -1,0 +1,9 @@
+.practicalItem {
+    padding: 10px 0;
+}
+
+#addPracButton {
+    margin-left: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+}
