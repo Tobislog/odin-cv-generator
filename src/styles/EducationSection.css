@@ -1,3 +1,9 @@
 .educationItem {
     padding: 10px 0;
 }
+
+#addEduButton {
+    margin-left: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+}

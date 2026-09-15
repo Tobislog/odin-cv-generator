@@ -80,7 +80,14 @@ function EducationSection ({initialData, onSave}) {
 
     return (
         <section className="formSection">
-            <h2>Educational Experiences</h2>
+            <h2>
+                Educational Experiences
+                {!isSaved && (
+                    <button type="button" onClick={handleAdd} id="addEduButton">
+                        +
+                    </button>
+                )}
+            </h2>
             <form onSubmit={handleSubmit}>
                 {draftList.map(item => (
                     <EducationItem
@@ -92,11 +99,7 @@ function EducationSection ({initialData, onSave}) {
                     />
                 ))}
 
-                {!isSaved && (
-                    <button type="button" onClick={handleAdd}>
-                        + Add Education
-                    </button>
-                )}
+                
                 <Button text={isSaved ? "Edit" : "Save"} type="submit" />
             </form>
         </section>
