@@ -110,4 +110,4 @@ function PracticalSection ({initialData, onSave}) {
 
 
 
-export default PracticalItem;
+export default PracticalSection;

@@ -4,6 +4,7 @@ import TextInput from './components/TextInput.jsx';
 import Button from './components/Button.jsx';
 import GeneralSection from './components/GeneralSection.jsx';
 import EducationSection from './components/EducationSection.jsx';
+import PracticalSection from './components/PracticalSection.jsx';
 
 const defaultGeneralInfo = {
   firstName: 'Your',
@@ -21,11 +22,21 @@ const defaultEducationInfo = [{
   endDate: '2023-09-30'
 }];
 
+const defaultPracticalInfo = [{
+  id: '1',
+  company: 'Apple',
+  role: 'Software Developer',
+  responsibilities: 'Front-End',
+  startDate: '1990-10-01',
+  endDate: '2026-01-01'
+}];
+
 function App() {
 
   // Finaler Sate für CV, wird bei Klick auf Save gefüllt.
   const [savedGeneralInfo, setSavedGeneralInfo] = useState(defaultGeneralInfo);
   const [savedEducatonInfo, setSavedEducationInfo] = useState(defaultEducationInfo);
+  const [savedPracticalInfo, setSavedPracticalInfo] = useState(defaultPracticalInfo);
 
   return (
     
@@ -41,17 +52,10 @@ function App() {
             initialData={defaultEducationInfo}
             onSave={(data) => setSavedEducationInfo(data)}
           />
-          <section className="formSection">
-            <h2>Practical Experiences</h2>
-            <form>
-              <TextInput label="Company Name" />
-              <TextInput label="Role" />
-              <TextInput label="Responsibilities" />
-              <TextInput label="Start" type="date"/>
-              <TextInput label="End" type="date"/>
-              <Button text="Save" type="submit" />
-            </form>
-          </section>
+          <PracticalSection
+            initialData={defaultPracticalInfo}
+            onSave={(data) => setSavedPracticalInfo(data)}
+          />
         </div>
         <div className="right">
           <div className="cvRender">
@@ -74,9 +78,23 @@ function App() {
                   </div>
                 ))}
               </div>
+
+              <div>
+                <h3>Praxiserfahrung</h3>
+                {savedPracticalInfo.map(prac => (
+                  <div key={prac.id}>
+                    <strong>{prac.role}</strong> - {prac.company}
+                    <p>{prac.responsibilities}</p>
+                    <p>
+                      {new Date(prac.startDate).toLocaleDateString('de-DE')} bis {new Date(prac.endDate).toLocaleDateString('de-DE')}
+                    </p>
+                  </div>
+                ))}
+              </div>
           </div>
         </div>
       </div>
+      <footer>© 2026 Tobias Rau</footer>
     </>
   )
 }
