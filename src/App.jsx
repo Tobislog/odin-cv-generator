@@ -1,9 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-import TextInput from './components/TextInput.jsx'
+import { useState } from 'react';
+import './App.css';
+import TextInput from './components/TextInput.jsx';
+import Button from './components/Button.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleButtonClick = (url) => {
+    window.location.href = url;
+  };
 
   return (
     <>
@@ -11,8 +14,11 @@ function App() {
       <section id="general">
         <h3>General Information</h3>
         <form>
-          <TextInput id="1" name="Vorname"/>
-          <TextInput id="2" name="Nachname"/>
+          <TextInput label="Vorname" />
+          <TextInput label="Nachname" />
+          <TextInput label="Geburtsdatum" type="date"/>
+          <TextInput label="Geburtsort" />
+          <Button text="Hallo!" />
         </form>
       </section>
       <section id="education">

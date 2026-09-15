@@ -1,13 +1,25 @@
-import './TextInput.css'
+import { useId} from 'react';
+import '../styles/TextInput.css';
 
-function TextInput (props) {
+export default function TextInput ({
+    label,
+    id: customId,
+    type = "text",
+    disabled = false,
+    ...rest
 
+}) {
+    const generatedId = useId();
+    const inputId = customId || generatedId;
     return (
         <div className="TextInputGroup">
-            <label htmlFor={props.id}>{props.name}</label>
-            <input id = {props.id} name={props.name}/>
+            {label && <label htmlFor={inputId}>{label}</label>}
+            <input 
+                id = {inputId}
+                type = {type}
+                disabled = {disabled}
+                {...rest}
+            />
         </div>
     )
 }
-
-export default TextInput;
