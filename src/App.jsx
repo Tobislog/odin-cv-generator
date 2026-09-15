@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import TextInput from './components/TextInput.jsx';
 import Button from './components/Button.jsx';
+import GeneralSection from './components/GeneralSection.jsx';
 
 const defaultGeneralInfo = {
   firstName: 'Your',
@@ -12,31 +13,9 @@ const defaultGeneralInfo = {
 };
 
 function App() {
-  // State für die Daten General
-  const [draftGeneralInfo, setDraftGeneralInfo] = useState(defaultGeneralInfo);
 
   // Finaler Sate für CV, wird bei Klick auf Save gefüllt.
   const [savedGeneralInfo, setSavedGeneralInfo] = useState(defaultGeneralInfo);
-
-  // State für Status
-  const [isGeneralSaved, setIsGeneralSaved] = useState(false);
-
-  const handleChange = (field, value) => {
-    setDraftGeneralInfo(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  }
-
-  const handleSaveOrEdit = (e) => {
-    e.preventDefault();
-    if (isGeneralSaved) {
-      setIsGeneralSaved(false);
-    } else {
-    setSavedGeneralInfo(draftGeneralInfo);
-    setIsGeneralSaved(true)
-    }
-  };
 
   return (
     
@@ -44,48 +23,14 @@ function App() {
       <h1>React CV-Maker</h1>
       <div id="page">
         <div className="left">
-          <section className="formSection">
-            <h2>General Information</h2>
-            <form id="generalForm" onSubmit={handleSaveOrEdit}>
-              <TextInput 
-                label="Vorname" 
-                value={draftGeneralInfo.firstName} 
-                onChange={(e) => handleChange('firstName', e.target.value)}
-                disabled={isGeneralSaved}
-              />
-              <TextInput 
-                label="Nachname"
-                value={draftGeneralInfo.lastName} 
-                onChange={(e) => handleChange('lastName', e.target.value)}
-                disabled={isGeneralSaved}
-              />
-              <TextInput 
-                label="Geburtsdatum" 
-                type="date"
-                value={draftGeneralInfo.birthDate} 
-                onChange={(e) => handleChange('birthDate', e.target.value)}
-                disabled={isGeneralSaved}
-              />
-              <TextInput 
-                label="E-Mail" 
-                type="email"
-                value={draftGeneralInfo.email} 
-                onChange={(e) => handleChange('email', e.target.value)}
-                disabled={isGeneralSaved}
-              />
-              <TextInput 
-                label="Phone" 
-                type="tel"
-                value={draftGeneralInfo.phone} 
-                onChange={(e) => handleChange('phone', e.target.value)}
-                disabled={isGeneralSaved}
-              />
-              <Button text={isGeneralSaved ? "Edit" : "Save"} type="submit"/>
-            </form>
-          </section>
+          <GeneralSection
+            initialData={defaultGeneralInfo}
+            onSave={(data) => setSavedGeneralInfo(data)}
+          />
+
           <section className="formSection">
             <h2>Educational Experiences</h2>
-            <form>
+            <form id="educationForm">
               <TextInput label="School Name" />
               <TextInput label="Title of Study" />
               <TextInput label="Beginn" type="date" />
