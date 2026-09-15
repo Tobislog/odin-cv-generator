@@ -3,6 +3,7 @@ import '../styles/TextInput.css';
 
 export default function TextInput ({
     label,
+    value,
     id: customId,
     type = "text",
     disabled = false,
