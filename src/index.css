@@ -90,3 +90,9 @@ h2 {
 p {
   margin: 0;
 }
+
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  color: inherit;
+}
