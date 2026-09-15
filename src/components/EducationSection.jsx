@@ -1,0 +1,3 @@
+function EducationSection ({initialData, onSave}) {
+    
+}
